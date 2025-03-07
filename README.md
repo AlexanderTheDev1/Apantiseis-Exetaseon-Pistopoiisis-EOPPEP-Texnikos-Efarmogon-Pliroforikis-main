@@ -1,3 +1,5 @@
+# QUIZ
+
 # Apantiseis-Exetaseon-Pistopoiisis-EOPPEP-Texnikos-Efarmogon-Pliroforikis
 
 Αυτό το repository περιέχει τις **επίσημες ερωτήσεις** και τις **απαντήσεις** για την πιστοποίηση ειδικότητας *'Τεχνικός Εφαρμογών Πληροφορικής (ΠΟΛΥΜΕΣΑ / WEB DESIGNER - DEVELOPER / VIDEOGAMES)'* από τον ΕΟΠΠΕΠ.  
