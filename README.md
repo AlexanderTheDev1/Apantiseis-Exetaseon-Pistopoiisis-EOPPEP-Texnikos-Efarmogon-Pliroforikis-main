@@ -67,23 +67,17 @@
    Χρησιμοποιήθηκε για την κατανόηση και αναφορά στις τεχνολογίες web development, όπως HTML, CSS, JavaScript, και άλλες τεχνολογίες για το frontend και backend development.  
    [MDN Web Docs](https://developer.mozilla.org/)
 
-5. **W3Schools**  
-   Χρησιμοποιήθηκε για πρόσθετη εκπαίδευση και για να αναλύσει βασικές έννοιες του προγραμματισμού και της ανάπτυξης ιστότοπων.  
-   [W3Schools](https://www.w3schools.com/)
 
-6. **Stack Overflow**  
+5. **Stack Overflow**  
    Χρησιμοποιήθηκε ως πόρος για επίλυση προβλημάτων και αναφορά σε κοινές προκλήσεις κατά τη διάρκεια του προγραμματισμού.  
    [Stack Overflow](https://stackoverflow.com/)
 
-7. **GitHub**  
+6. **GitHub**  
    Χρησιμοποιήθηκε για την αναφορά στις καλύτερες πρακτικές για τη χρήση και τη διαχείριση κώδικα μέσω αποθετηρίων Git.  
    [GitHub](https://github.com/)
 
-8. **Microsoft Docs (for .NET, Azure, SQL)**  
-   Ανάλογα με το θέμα που περιλαμβάνει ο κάθε τομέας της πιστοποίησης, η Microsoft παρέχει επίσημες πηγές για την ανάπτυξη εφαρμογών και υποδομών.  
-   [Microsoft Docs](https://docs.microsoft.com/)
 
-9. **Oracle Documentation**  
+7. **Oracle Documentation**  
    Για τις βάσεις δεδομένων και τις τεχνολογίες Java, Oracle είναι μία από τις πιο αξιόπιστες πηγές για τη μάθηση και την κατανόηση των τεχνολογιών.  
    [Oracle Documentation](https://docs.oracle.com/)
 
