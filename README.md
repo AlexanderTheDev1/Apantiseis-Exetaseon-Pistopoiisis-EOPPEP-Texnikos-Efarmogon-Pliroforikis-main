@@ -1,6 +1,6 @@
-# QUIZ
 
-# Apantiseis-Exetaseon-Pistopoiisis-EOPPEP-Texnikos-Efarmogon-Pliroforikis
+
+# Apantiseis-Exetaseon-Pistopoiisis-EOPPEP-Texnikos-Efarmogon-Pliroforikis se morfh QUIZ
 
 Αυτό το repository περιέχει τις **επίσημες ερωτήσεις** και τις **απαντήσεις** για την πιστοποίηση ειδικότητας *'Τεχνικός Εφαρμογών Πληροφορικής (ΠΟΛΥΜΕΣΑ / WEB DESIGNER - DEVELOPER / VIDEOGAMES)'* από τον ΕΟΠΠΕΠ.  
 Ο σκοπός αυτού του repository είναι η προετοιμασία για τις εξετάσεις πιστοποίησης στον τομέα των πολυμέσων, web development και game development.
