@@ -48,3 +48,44 @@
 Αυτό το έργο είναι εκπαιδευτικού χαρακτήρα και δεν έχει καμία επίσημη σύνδεση με τον ΕΟΠΠΕΠ ή άλλους οργανισμούς πιστοποίησης. 
 Οι ερωτήσεις και απαντήσεις είναι για εκπαιδευτική προετοιμασία και δεν εγγυώνται την επιτυχία στις επίσημες εξετάσεις. 
 Παρόλο που οι ερωτήσεις βασίζονται στις επίσημες εξετάσεις του ΕΟΠΠΕΠ, το παρόν έργο δεν αποτελεί επίσημο υλικό του οργανισμού και δεν έχει καμία σύνδεση με αυτόν.
+
+## Πηγές / Αναφορές
+
+1. **Επίσημος Οδηγός Εξετάσεων ΕΟΠΠΕΠ - Τεχνικός Εφαρμογών Πληροφορικής**  
+   Το επίσημο έγγραφο του ΕΟΠΠΕΠ για τον τομέα "Τεχνικός Εφαρμογών Πληροφορικής", το οποίο περιλαμβάνει τις ερωτήσεις και τις απαιτήσεις για την πιστοποίηση.  
+   [Επίσημος Οδηγός ΕΟΠΠΕΠ](https://www.eoppep.gr/phocadownloadpap/userupload/07_TEXNIKOS_EFARMOGON_PLHROFORIKHS.pdf?utm_source=chatgpt.com)
+
+2. **OpenAI's ChatGPT**  
+   Χρησιμοποιήθηκε για την υποστήριξη της έρευνας, της διαρθρωτικής οργάνωσης και της επεξεργασίας των απαντήσεων. Οι απαντήσεις που παρέχονται έχουν προσαρμοστεί και επαληθευτεί για να αντικατοπτρίζουν τη δική μου κατανόηση του υλικού.  
+   [ChatGPT (OpenAI)](https://www.openai.com/chatgpt)
+
+3. **Grammarly Plagiarism Checker**  
+   Χρησιμοποιήθηκε για τη διασφάλιση της αυθεντικότητας των απαντήσεων και την αποφυγή λογοκλοπής.  
+   [Grammarly Plagiarism Checker](https://www.grammarly.com/plagiarism-checker?utm_source=google&utm_medium=cpc&utm_campaign=19836457570&utm_content=652228916766&utm_term=plagiarism%20checker&target=&targetid=kwd-11839001&adgroup=145729836846&device=c&matchtype=b&placement=&network=g&extension=&clickid=CjwKCAiArKW-BhAzEiwAZhWsIHs2vx0jE6huoZo9LqhG2YwjQVwoCKTX-gOIdQauvxQXaN19vlbvTBoCy6QQAvD_BwE&gad_source=1&gclid=CjwKCAiArKW-BhAzEiwAZhWsIHs2vx0jE6huoZo9LqhG2YwjQVwoCKTX-gOIdQauvxQXaN19vlbvTBoCy6QQAvD_BwE&gclsrc=aw.ds)
+
+4. **MDN Web Docs (Mozilla Developer Network)**  
+   Χρησιμοποιήθηκε για την κατανόηση και αναφορά στις τεχνολογίες web development, όπως HTML, CSS, JavaScript, και άλλες τεχνολογίες για το frontend και backend development.  
+   [MDN Web Docs](https://developer.mozilla.org/)
+
+5. **W3Schools**  
+   Χρησιμοποιήθηκε για πρόσθετη εκπαίδευση και για να αναλύσει βασικές έννοιες του προγραμματισμού και της ανάπτυξης ιστότοπων.  
+   [W3Schools](https://www.w3schools.com/)
+
+6. **Stack Overflow**  
+   Χρησιμοποιήθηκε ως πόρος για επίλυση προβλημάτων και αναφορά σε κοινές προκλήσεις κατά τη διάρκεια του προγραμματισμού.  
+   [Stack Overflow](https://stackoverflow.com/)
+
+7. **GitHub**  
+   Χρησιμοποιήθηκε για την αναφορά στις καλύτερες πρακτικές για τη χρήση και τη διαχείριση κώδικα μέσω αποθετηρίων Git.  
+   [GitHub](https://github.com/)
+
+8. **Microsoft Docs (for .NET, Azure, SQL)**  
+   Ανάλογα με το θέμα που περιλαμβάνει ο κάθε τομέας της πιστοποίησης, η Microsoft παρέχει επίσημες πηγές για την ανάπτυξη εφαρμογών και υποδομών.  
+   [Microsoft Docs](https://docs.microsoft.com/)
+
+9. **Oracle Documentation**  
+   Για τις βάσεις δεδομένων και τις τεχνολογίες Java, Oracle είναι μία από τις πιο αξιόπιστες πηγές για τη μάθηση και την κατανόηση των τεχνολογιών.  
+   [Oracle Documentation](https://docs.oracle.com/)
+
+Αυτή η λίστα αναφοράς καλύπτει πολλές από τις πηγές που χρησιμοποιήθηκαν για την κατανόηση και τη σύνταξη του περιεχομένου αυτού του έργου, καθώς και για τη διασφάλιση της ποιότητας και της ακρίβειας των απαντήσεων. Σε κάθε περίπτωση, οι χρήστες ενθαρρύνονται να ανατρέχουν στις αρχικές πηγές για περαιτέρω έρευνα και επιβεβαίωση.
+
