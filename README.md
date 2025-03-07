@@ -1,7 +1,10 @@
-# Apantiseis-Exetaseon-Pistopoiisis-EOPPEP-Texnikos-Efarmogon-Pliroforikis
+
+
+# Apantiseis-Exetaseon-Pistopoiisis-EOPPEP-Texnikos-Efarmogon-Pliroforikis se morfh QUIZ
 
 Αυτό το repository περιέχει τις **επίσημες ερωτήσεις** και τις **απαντήσεις** για την πιστοποίηση ειδικότητας *'Τεχνικός Εφαρμογών Πληροφορικής (ΠΟΛΥΜΕΣΑ / WEB DESIGNER - DEVELOPER / VIDEOGAMES)'* από τον ΕΟΠΠΕΠ.  
 Ο σκοπός αυτού του repository είναι η προετοιμασία για τις εξετάσεις πιστοποίησης στον τομέα των πολυμέσων, web development και game development.
+
 
 ## Σκοπός
 
@@ -15,6 +18,9 @@
 - Τις **επίσημες ερωτήσεις** πιστοποίησης του ΕΟΠΠΕΠ.
 - **Απαντήσεις** στις ερωτήσεις, οι οποίες έχουν παραχθεί από εμένα για να βοηθήσουν στην προετοιμασία για τις εξετάσεις.
 - Αναφορά στους τομείς της πιστοποίησης: *Πολυμέσα*, *Web Development*, *Game Development*.
+- Για όλες τις λεπτομέρειες διαβαστε αυτό [https://github.com/AlexanderTheDev1/Apantiseis-Exetaseon-Pistopoiisis-EOPPEP-Texnikos-Efarmogon-Pliroforikis-main/blob/main/origin_07_TEXNIKOS_EFARMOGON_PLHROFORIKHS.txt]
+
+  
 
 ## Πως να χρησιμοποιήσετε το repository
 
@@ -31,13 +37,49 @@
 ## Σημειώσεις
 Οι ερωτήσεις προέρχονται από το επίσημο υλικό του ΕΟΠΠΕΠ και παρέχονται για εκπαιδευτικούς σκοπούς. Οι απαντήσεις είναι οι δικές μου και έχουν παραχθεί για να βοηθήσουν στη διαδικασία προετοιμασίας.
 Δεν επιτρέπεται η εμπορική χρήση των υλικών του repository χωρίς την κατάλληλη άδεια.
-Συνεισφορές
+
+## Συνεισφορές
 Εάν επιθυμείτε να συνεισφέρετε στο έργο, παρακαλώ δημιουργήστε pull request με τις προτεινόμενες αλλαγές σας. Όλες οι συνεισφορές πρέπει να συμμορφώνονται με την άδεια Creative Commons και να είναι για εκπαιδευτικούς σκοπούς.
 
 ## Επικοινωνία
-Για οποιαδήποτε απορία ή πρόταση μπορείτε να επικοινωνήσετε μέσω του GitHub ή μέσω email στο alexander.yourdev@gmail.com.
+Για οποιαδήποτε απορία ή πρόταση μπορείτε να επικοινωνήσετε μέσω του GitHub ή μέσω email στο [alexander.yourdev@gmail.com].
 
 ## Αποποίηση Ευθυνών
 Αυτό το έργο είναι εκπαιδευτικού χαρακτήρα και δεν έχει καμία επίσημη σύνδεση με τον ΕΟΠΠΕΠ ή άλλους οργανισμούς πιστοποίησης. 
 Οι ερωτήσεις και απαντήσεις είναι για εκπαιδευτική προετοιμασία και δεν εγγυώνται την επιτυχία στις επίσημες εξετάσεις. 
 Παρόλο που οι ερωτήσεις βασίζονται στις επίσημες εξετάσεις του ΕΟΠΠΕΠ, το παρόν έργο δεν αποτελεί επίσημο υλικό του οργανισμού και δεν έχει καμία σύνδεση με αυτόν.
+
+## Πηγές / Αναφορές
+
+1. **Επίσημος Οδηγός Εξετάσεων ΕΟΠΠΕΠ - Τεχνικός Εφαρμογών Πληροφορικής**  
+   Το επίσημο έγγραφο του ΕΟΠΠΕΠ για τον τομέα "Τεχνικός Εφαρμογών Πληροφορικής", το οποίο περιλαμβάνει τις ερωτήσεις και τις απαιτήσεις για την πιστοποίηση.  
+   [Επίσημος Οδηγός ΕΟΠΠΕΠ](https://www.eoppep.gr/phocadownloadpap/userupload/07_TEXNIKOS_EFARMOGON_PLHROFORIKHS.pdf?utm_source=chatgpt.com)
+
+2. **OpenAI's ChatGPT**  
+   Χρησιμοποιήθηκε για την υποστήριξη της έρευνας, της διαρθρωτικής οργάνωσης και της επεξεργασίας των απαντήσεων. Οι απαντήσεις που παρέχονται έχουν προσαρμοστεί και επαληθευτεί για να αντικατοπτρίζουν τη δική μου κατανόηση του υλικού.  
+   [ChatGPT (OpenAI)](https://www.openai.com/chatgpt)
+
+3. **Grammarly Plagiarism Checker**  
+   Χρησιμοποιήθηκε για τη διασφάλιση της αυθεντικότητας των απαντήσεων και την αποφυγή λογοκλοπής.  
+   [Grammarly Plagiarism Checker](https://www.grammarly.com/plagiarism-checker?utm_source=google&utm_medium=cpc&utm_campaign=19836457570&utm_content=652228916766&utm_term=plagiarism%20checker&target=&targetid=kwd-11839001&adgroup=145729836846&device=c&matchtype=b&placement=&network=g&extension=&clickid=CjwKCAiArKW-BhAzEiwAZhWsIHs2vx0jE6huoZo9LqhG2YwjQVwoCKTX-gOIdQauvxQXaN19vlbvTBoCy6QQAvD_BwE&gad_source=1&gclid=CjwKCAiArKW-BhAzEiwAZhWsIHs2vx0jE6huoZo9LqhG2YwjQVwoCKTX-gOIdQauvxQXaN19vlbvTBoCy6QQAvD_BwE&gclsrc=aw.ds)
+
+4. **MDN Web Docs (Mozilla Developer Network)**  
+   Χρησιμοποιήθηκε για την κατανόηση και αναφορά στις τεχνολογίες web development, όπως HTML, CSS, JavaScript, και άλλες τεχνολογίες για το frontend και backend development.  
+   [MDN Web Docs](https://developer.mozilla.org/)
+
+
+5. **Stack Overflow**  
+   Χρησιμοποιήθηκε ως πόρος για επίλυση προβλημάτων και αναφορά σε κοινές προκλήσεις κατά τη διάρκεια του προγραμματισμού.  
+   [Stack Overflow](https://stackoverflow.com/)
+
+6. **GitHub**  
+   Χρησιμοποιήθηκε για την αναφορά στις καλύτερες πρακτικές για τη χρήση και τη διαχείριση κώδικα μέσω αποθετηρίων Git.  
+   [GitHub](https://github.com/)
+
+
+7. **Oracle Documentation**  
+   Για τις βάσεις δεδομένων και τις τεχνολογίες Java, Oracle είναι μία από τις πιο αξιόπιστες πηγές για τη μάθηση και την κατανόηση των τεχνολογιών.  
+   [Oracle Documentation](https://docs.oracle.com/)
+
+Αυτή η λίστα αναφοράς καλύπτει πολλές από τις πηγές που χρησιμοποιήθηκαν για την κατανόηση και τη σύνταξη του περιεχομένου αυτού του έργου, καθώς και για τη διασφάλιση της ποιότητας και της ακρίβειας των απαντήσεων. Σε κάθε περίπτωση, οι χρήστες ενθαρρύνονται να ανατρέχουν στις αρχικές πηγές για περαιτέρω έρευνα και επιβεβαίωση.
+
