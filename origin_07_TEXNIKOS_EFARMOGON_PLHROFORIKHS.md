@@ -3796,7 +3796,7 @@ public class VowelsCount {
 }
 ```
 
-## 51. Δημιουργήστε ένα πρόγραμμα σε Java το οποίο θα σχεδιάζει ένα κύκλο. Το χρώμα και το μέγεθος της ακτίνας του κύκλου θα καθορίζεται από τον χρήστη.
+## ✅51. Δημιουργήστε ένα πρόγραμμα σε Java το οποίο θα σχεδιάζει ένα κύκλο. Το χρώμα και το μέγεθος της ακτίνας του κύκλου θα καθορίζεται από τον χρήστη.
 
 ```java
 import javax.swing.*;
@@ -3858,14 +3858,83 @@ public class CircleDrawer extends JPanel {
         frame.setVisible(true);
     }
 }
-
 ```
-## 52. Τι είναι τα Demon Threads και τί τα Non-Demon Threads; Από που εκτελούνται και πως;
 
-## 53. Δίνεται το μη ASCII αρχείο DATA.dbs όπου κάθε εγγραφή είναι αντικείμενο που έχει την ακόλουθη δομή: IBAN λογαριασμού (20 χαρακτήρες) Ανάληψη/Κατάθεση ('0'/'1' αντίστοιχα) Ποσό συναλλαγής (δεκαδικός αριθμός) Όνομα πελάτη (40 χαρακτήρες) ΑΦΜ πελάτη (ακέραιος 8-ψήφιος)
-Να γραφεί πρόγραμμα Java προσπέλασης του αρχείου DATA.dbs που να τυπώνει στην οθόνη το
-άθροισμα των καταθέσεων, το άθροισμα των αναλήψεων καθώς και τα στοιχεία του πελάτη με τη
-μεγαλύτερη ανάληψη και κατάθεση.
+## ✅52. Τι είναι τα Demon Threads και τί τα Non-Demon Threads; Από που εκτελούνται και πως;
+
+**Demon Threads**
+- Τα Demon threads είναι νήματα που εκτελούνται στο παρασκήνιο και λειτουργούν ανεξάρτητα από το κύριο πρόγραμμα.
+- Εκτελούνται από την JVM.
+- Δεν εμποδίζουν την έξοδο του προγράμματος όταν ολοκληρωθούν όλα τα μη Demon threads.
+
+**Non-Demon Threads**
+- Τα Non-Demon threads είναι κανονικά νήματα που εμποδίζουν την έξοδο του προγράμματος μέχρι να ολοκληρωθεί η εκτέλεσή τους.
+- Εκτελούνται από την JVM.
+- Το πρόγραμμα περιμένει να ολοκληρωθούν τα μη Demon threads πριν κλείσει.
+
+## ✅53. Δίνεται το μη ASCII αρχείο DATA.dbs όπου κάθε εγγραφή είναι αντικείμενο που έχει την ακόλουθη δομή: IBAN λογαριασμού (20 χαρακτήρες) Ανάληψη/Κατάθεση ('0'/'1' αντίστοιχα) Ποσό συναλλαγής (δεκαδικός αριθμός) Όνομα πελάτη (40 χαρακτήρες) ΑΦΜ πελάτη (ακέραιος 8-ψήφιος) Να γραφεί πρόγραμμα Java προσπέλασης του αρχείου DATA.dbs που να τυπώνει στην οθόνη το άθροισμα των καταθέσεων, το άθροισμα των αναλήψεων καθώς και τα στοιχεία του πελάτη με τη μεγαλύτερη ανάληψη και κατάθεση.
+
+```java
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
+public class BankTransaction {
+    public static void main(String[] args) {
+        String fileName = "DATA.dbs";
+        
+        // Αρχικοποιούμε τις μεταβλητές για τα αθροίσματα
+        double totalDeposits = 0.0;
+        double totalWithdrawals = 0.0;
+        
+        // Μεταβλητές για το μεγαλύτερο ποσό κατάθεσης και ανάληψης
+        double maxDeposit = 0.0;
+        double maxWithdrawal = 0.0;
+        String maxDepositCustomer = "";
+        String maxWithdrawalCustomer = "";
+        
+        try (RandomAccessFile file = new RandomAccessFile(fileName, "r")) {
+            while (file.getFilePointer() < file.length()) {
+                // Διαβάζουμε την εγγραφή
+                byte[] record = new byte[109]; // 20 + 1 + 8 + 40 + 8 = 109
+                file.read(record);
+                
+                // Παίρνουμε τα δεδομένα
+                String IBAN = new String(record, 0, 20, StandardCharsets.UTF_8).trim();
+                char transactionType = (char) record[20];
+                double amount = Double.parseDouble(new String(record, 21, 8, StandardCharsets.UTF_8).trim());
+                String customerName = new String(record, 29, 40, StandardCharsets.UTF_8).trim();
+                String taxId = new String(record, 69, 8, StandardCharsets.UTF_8).trim();
+                
+                // Ελέγχουμε το τύπο συναλλαγής και ενημερώνουμε τα αθροίσματα
+                if (transactionType == '1') {
+                    totalDeposits += amount;
+                    // Ενημερώνουμε το μεγαλύτερο ποσό κατάθεσης και τον πελάτη
+                    if (amount > maxDeposit) {
+                        maxDeposit = amount;
+                        maxDepositCustomer = customerName + " (ΑΦΜ: " + taxId + ")";
+                    }
+                } else if (transactionType == '0') {
+                    totalWithdrawals += amount;
+                    // Ενημερώνουμε το μεγαλύτερο ποσό ανάληψης και τον πελάτη
+                    if (amount > maxWithdrawal) {
+                        maxWithdrawal = amount;
+                        maxWithdrawalCustomer = customerName + " (ΑΦΜ: " + taxId + ")";
+                    }
+                }
+            }
+            
+            // Εμφανίζουμε τα αποτελέσματα
+            System.out.println("Άθροισμα καταθέσεων: " + totalDeposits);
+            System.out.println("Άθροισμα αναλήψεων: " + totalWithdrawals);
+            System.out.println("Πελάτης με τη μεγαλύτερη κατάθεση: " + maxDepositCustomer + " - " + maxDeposit);
+            System.out.println("Πελάτης με τη μεγαλύτερη ανάληψη: " + maxWithdrawalCustomer + " - " + maxWithdrawal);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
 
 ## 54. Περιγράψτε τη βασική δομή μιας εφαρμογής φτιαγμένης σε OpenGL.
 
