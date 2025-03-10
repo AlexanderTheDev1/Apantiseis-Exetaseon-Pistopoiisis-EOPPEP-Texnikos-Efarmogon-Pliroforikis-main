@@ -2027,22 +2027,20 @@ SELECT E.NAME, S.NAME
 FROM EMPLOYEE E, EMPLOYEE S 
 WHERE E.SUPERSN=S.SN
 ```
-Ψευδώνυμα (Aliases): Είναι εναλλακτικά ονόματα που δίνονται σε πίνακες ή στήλες για ευκολία και σαφήνεια στα ερωτήματα SQL.
+**Ψευδώνυμα (Aliases)**: Είναι εναλλακτικά ονόματα που δίνονται σε πίνακες ή στήλες για ευκολία και σαφήνεια στα ερωτήματα SQL.
 
-Επεξήγηση κώδικα:
-
-SELECT E.NAME, S.NAME: Επιστρέφει τα ονόματα των υπαλλήλων και των επόπτων τους.
-EMPLOYEE E, EMPLOYEE S: Δημιουργούνται δύο ψευδώνυμα για τον πίνακα EMPLOYEE, το E και το S.
-E.SUPERSN = S.SN: Η συνθήκη συνένωσης που αντιστοιχίζει τον επόπτη (SUPERSN) ενός υπαλλήλου με τον αριθμό κοινωνικής ασφάλισης (SN) ενός άλλου.
+`SELECT E.NAME, S.NAME`: Επιστρέφει τα ονόματα των υπαλλήλων και των επόπτων τους.
+`EMPLOYEE E, EMPLOYEE S`: Δημιουργούνται δύο ψευδώνυμα για τον πίνακα EMPLOYEE, το E και το S.
+`E.SUPERSN = S.SN`: Η συνθήκη συνένωσης που αντιστοιχίζει τον επόπτη (SUPERSN) ενός υπαλλήλου με τον αριθμό κοινωνικής ασφάλισης (SN) ενός άλλου.
 
 
-## 182. Αν στο αποτέλεσμα ενός ερωτήματος πάρουμε ως απάντηση πολλαπλές πλειάδες πώς τις εξαλείφουμε; Δώστε ένα παράδειγμα σε SQL.
+## ✅182. Αν στο αποτέλεσμα ενός ερωτήματος πάρουμε ως απάντηση πολλαπλές πλειάδες πώς τις εξαλείφουμε; Δώστε ένα παράδειγμα σε SQL.
 
 ```sql
 SELECT DISTINCT column_name FROM table_name;
 ```
 
-## 183. Πώς επιτυγχάνουμε τη διάταξη των αποτελεσμάτων του ερωτήματος; Δώστε ένα παράδειγμα όπου θα επιλέγεται από ένα πίνακα το ονοματεπώνυμο ενός σπουδαστή και θα εμφανίζονται τα αποτελέσματα ταξινομημένα κατά αύξουσα αλφαβητική σειρά στο όνομα και κατά φθίνουσα αλφαβητική σειρά στο επώνυμο.
+## ✅183. Πώς επιτυγχάνουμε τη διάταξη των αποτελεσμάτων του ερωτήματος; Δώστε ένα παράδειγμα όπου θα επιλέγεται από ένα πίνακα το ονοματεπώνυμο ενός σπουδαστή και θα εμφανίζονται τα αποτελέσματα ταξινομημένα κατά αύξουσα αλφαβητική σειρά στο όνομα και κατά φθίνουσα αλφαβητική σειρά στο επώνυμο.
 
 ```sql
 SELECT first_name, last_name 
@@ -2050,7 +2048,7 @@ FROM students
 ORDER BY first_name ASC, last_name DESC;
 ```
 
-## 184. Εξηγήστε τον ακόλουθο κώδικα:
+## ✅184. Εξηγήστε τον ακόλουθο κώδικα:
 
 ```sql
 SELECT ΝΑΜΕ
@@ -2058,8 +2056,25 @@ FROM WORKER W
 WHERE EXISTS
 (SELECT * FROM CONNECT C WHERE ID=C.CONNECT_ID AND W.Name=C.CONNECT_Name);
 ```
+1. **`SELECT NAME FROM WORKER W`**:  
+   Επιλέγει το πεδίο `NAME` από τον πίνακα `WORKER`, τον οποίο αναφερόμαστε με το alias `W`.
 
-## 185. Δώστε 3 τύπους συνένωσης στην SQL (όχι το απλό JOIN) και για κάθε έναν από αυτούς δώστε ένα παράδειγμα με χρήση κώδικα SQL.
+2. **`WHERE EXISTS`**:  
+   Η `EXISTS` είναι μια υποερώτηση (subquery) που επιστρέφει `TRUE` αν επιστρέφει τουλάχιστον μία γραμμή. Αν η υποερώτηση επιστρέψει γραμμές, τότε η κεντρική ερώτηση θα επιλέξει τις γραμμές του πίνακα `WORKER` όπου η συνθήκη ισχύει.
+
+3. **`(SELECT * FROM CONNECT C WHERE ID=C.CONNECT_ID AND W.Name=C.CONNECT_Name)`**:  
+   Εδώ, η υποερώτηση επιλέγει όλα τα πεδία από τον πίνακα `CONNECT`, τον οποίο αναφερόμαστε με το alias `C`.
+   - Η υποερώτηση ψάχνει για καταχωρήσεις στον πίνακα `CONNECT` όπου το πεδίο `ID` από τον πίνακα `WORKER` (με alias `W`) είναι ίσο με το `C.CONNECT_ID` και το `W.Name` είναι ίσο με το `C.CONNECT_Name`.
+
+4. **Συνολική Λειτουργία**:  
+   Η κεντρική ερώτηση επιστρέφει τα ονόματα (`NAME`) από τον πίνακα `WORKER` όπου υπάρχει τουλάχιστον μία εγγραφή στον πίνακα `CONNECT` που πληροί τις συνθήκες:
+   - Η τιμή `ID` του εργαζομένου στον πίνακα `WORKER` είναι ίση με το πεδίο `CONNECT_ID` του πίνακα `CONNECT`.
+   - Η τιμή `Name` του εργαζομένου στον πίνακα `WORKER` είναι ίση με το πεδίο `CONNECT_Name` του πίνακα `CONNECT`.
+
+### Σκοπός:
+Αυτή η ερώτηση επιλέγει τα ονόματα των εργαζομένων που έχουν μια αντίστοιχη εγγραφή στον πίνακα `CONNECT` με βάση τα κριτήρια σύνδεσης.
+
+## ✅185. Δώστε 3 τύπους συνένωσης στην SQL (όχι το απλό JOIN) και για κάθε έναν από αυτούς δώστε ένα παράδειγμα με χρήση κώδικα SQL.
 
 - LEFT JOIN: Επιστρέφει όλα τα δεδομένα από τον αριστερό πίνακα και τα αντίστοιχα από τον δεξιό, αν υπάρχουν.
 ```sql
@@ -2082,90 +2097,443 @@ FROM students
 FULL JOIN courses ON students.course_id = courses.id;
 ```
 
+## ✅186. Αναλύστε τη χρήση των συναρτήσεων στον αντικειμενοστραφή προγραμματισμό. Δώστε παράδειγμα πως οι συναρτήσεις καλούνται ως μηνύματα σύνδεσης μεταξύ τάξεων.
 
-## 186. Αναλύστε τη χρήση των συναρτήσεων στον αντικειμενοστραφή προγραμματισμό. Δώστε παράδειγμα πως οι συναρτήσεις καλούνται ως μηνύματα σύνδεσης μεταξύ τάξεων.
+Στον αντικειμενοστραφή προγραμματισμό (OOP), οι **συναρτήσεις** (ή **μέθοδοι**) είναι μπλοκ κώδικα που εκτελούν συγκεκριμένες ενέργειες και συνδέονται με αντικείμενα (instances) κλάσεων. Αυτές οι μέθοδοι:
+
+- **Ορίζουν συμπεριφορές**: Καθορίζουν τις ενέργειες που μπορεί να εκτελέσει ένα αντικείμενο.
+- **Επιτρέπουν αλληλεπίδραση**: Μέσω της κλήσης μεθόδων, τα αντικείμενα μπορούν να αλληλεπιδρούν μεταξύ τους, ανταλλάσσοντας δεδομένα και ενεργώντας ως μονάδες σε ένα σύστημα.
+
+### Κλήση Συναρτήσεων ως Μηνύματα Σύνδεσης μεταξύ Τάξεων
+
+Στον OOP, η κλήση μεθόδων μεταξύ αντικειμένων λειτουργεί ως **μηνύματα** που επιτρέπουν την επικοινωνία και συνεργασία μεταξύ τους. Όταν ένα αντικείμενο καλεί μια μέθοδο σε άλλο αντικείμενο, στέλνει ένα "μήνυμα" ζητώντας του να εκτελέσει μια συγκεκριμένη ενέργεια.
+
+**Παράδειγμα:**
 
 ```java
-class Student {
+// Κλάση Car που αντιπροσωπεύει ένα αυτοκίνητο
+class Car {
+    private String model;
+    private int speed;
+
+    public Car(String model) {
+        this.model = model;
+        this.speed = 0;
+    }
+
+    public void accelerate(int increment) {
+        speed += increment;
+        System.out.println(model + " επιταχύνει κατά " + increment + " km/h. Τρέχουσα ταχύτητα: " + speed + " km/h.");
+    }
+
+    public void brake(int decrement) {
+        speed -= decrement;
+        if (speed < 0) speed = 0;
+        System.out.println(model + " επιβραδύνεται κατά " + decrement + " km/h. Τρέχουσα ταχύτητα: " + speed + " km/h.");
+    }
+}
+// Κλάση Driver που αντιπροσωπεύει έναν οδηγό
+class Driver {
     private String name;
 
-    public Student(String name) {
+    public Driver(String name) {
         this.name = name;
     }
 
-    public void attendCourse(Course course) {
-        System.out.println(name + " attends " + course.getCourseName());
-    }
-}
-
-class Course {
-    private String courseName;
-
-    public Course(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public String getCourseName() {
-        return courseName;
+    public void drive(Car car) {
+        System.out.println(name + " ξεκινάει οδήγηση.");
+        car.accelerate(50); // Κλήση μεθόδου accelerate του αντικειμένου Car
+        car.brake(20);       // Κλήση μεθόδου brake του αντικειμένου Car
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Student student = new Student("Alex");
-        Course course = new Course("Mathematics");
-        
-        student.attendCourse(course); // Κλήση συναρτήσεων ως μηνύματα σύνδεσης
+        Car myCar = new Car("Toyota");
+        Driver driver = new Driver("Γιάννης");
+
+        driver.drive(myCar); // Ο οδηγός οδηγεί το αυτοκίνητο
     }
 }
 ```
 
-## 187. Ποια από τα ακόλουθα είναι σωστά και ποια είναι λάθος; Αιτιολογήστε την απάντησή σας για κάθε περίπτωση.
-Person p1 = new Student();
-Person p2 = new PhDStudent();
-PhDStudent phd1 = new Student();
-Prof t1 = new Person();
-Student s1 = new PhDStudent();
+## ✅187. Ποια από τα ακόλουθα είναι σωστά και ποια είναι λάθος; Αιτιολογήστε την απάντησή σας για κάθε περίπτωση.
 
-## 188. Γιατί δεν μπορούμε να αφαιρέσουμε πεδία από μια subclass ενώ μπορούμε να προσθέσουμε;
+1. Person p1 = new Student(); ΣΩΣΤΟ ✅   
+- Η Student είναι υποκλάση της Person, άρα μπορεί να ανατεθεί σε μεταβλητή τύπου Person.
 
-## 189. Ποια είναι η διαφορά μεταξύ ενός Frame και ενός Dialog;
+2. Person p2 = new PhDStudent(); ΣΩΣΤΟ ✅ 
+- Η PhDStudent είναι υποκλάση της Student, η οποία είναι υποκλάση της Person. 
+- Άρα μπορεί να αποθηκευτεί σε μεταβλητή τύπου Person.
 
-## 190. Ποια είναι η διαφορά μεταξύ ενός αντικείμενου Menu και ενός MenuBar (σε Java);
+3. PhDStudent phd1 = new Student(); ΛΑΘΟΣ ❌ 
+- Η Student είναι **ανώτερη** στην ιεραρχία από την PhDStudent. 
+- Δεν μπορεί να ανατεθεί ένας Student σε μια μεταβλητή τύπου PhDStudent, γιατί μπορεί να μην έχει τα χαρακτηριστικά της.
 
-## 191. Ποια είναι η διαφορά μεταξύ ενός Menu και ενός MenuItem (σε Java);
+4. Prof t1 = new Person(); ΛΑΘΟΣ ❌ 
+ - Η Prof είναι **διαφορετική** υποκλάση της Person, αλλά η Person **δεν είναι υποκλάση της Prof**. 
+ - Δεν μπορεί να γίνει εκχώρηση από γονική σε υποκλάση χωρίς casting.
 
-## 192. Ποια είναι η διαφορά μεταξύ της επανεκκίνησης και της επαναφόρτωσης ενός Java applet;
+5. Student s1 = new PhDStudent(); ΣΩΣΤΟ ✅ 
+ - Η PhDStudent είναι **υποκλάση** της Student, άρα μπορεί να αποθηκευτεί σε μεταβλητή τύπου Student.
 
-## 193. Τι είναι οι constructors στην JAVA; Δώστε ένα παράδειγμα.
+## ✅188. Γιατί δεν μπορούμε να αφαιρέσουμε πεδία από μια subclass ενώ μπορούμε να προσθέσουμε;
 
-## 194. Να αναφέρετε από ποια μέρη αποτελείται η Java Virtual Machine και ποιες μεθόδους τρέχει.
+- Η υποκλάση πρέπει να διατηρεί τη συμβατότητα με την υπερκλάση.
+- Αν αφαιρούσαμε πεδία, θα σπάγαμε την αρχή αντικατάστασης Liskov.
+- Προσθέτοντας πεδία δεν επηρεάζεται η υπερκλάση.
 
-## 195. Ποιοι είναι οι τύποι μεταβλητών στην Java;
+## ✅189. Ποια είναι η διαφορά μεταξύ ενός Frame και ενός Dialog;
 
-## 196. Τι κάνει το παρακάτω JAVA πρόγραμμα:int j=5; int k=10; long max=0; max=k>j?k:j;
+- **Frame**: Ανεξάρτητο παράθυρο (JFrame).
+- **Dialog**: Δευτερεύον παράθυρο που εξαρτάται από ένα Frame (JDialog).
 
-## 197. Ποιος ο ρόλος των εξαιρέσεων στα προγράμματα εισόδου / εξόδου; Δώστε δύο παραδείγματα σε JAVA.
+## ✅190. Ποια είναι η διαφορά μεταξύ ενός αντικείμενου Menu και ενός MenuBar (σε Java);
 
-## 198. Δημιουργήστε σε JAVA το παιχνίδι κρεμάλα (hangman). O χρήστης εισάγει γράμματα τα οποία και συγκρίνονται με λέξεις που επιλέγονται τυχαία από έναν πίνακα με λέξεις string. Μηνύματα επιτυχίας ή αποτυχίας εμφανίζονται στο χρήστη και τον καθοδηγούν για το αποτέλεσμα. Για διευκόλυνσή σας τοποθετήστε στον πίνακα 5 διαφορετικές λέξεις και το πρόγραμμά σας μην επεκταθείτε στη δημιουργία GUI.
+- **MenuBar**: Περιέχει πολλά Menu.
+- **Menu**: Περιέχει πολλές επιλογές (MenuItem).
 
-## 199. Να ορίσετε σε JAVA την κλάση Tires (Λάστιχα) με τις ακόλουθες ιδιότητες:width Πλάτος της επιφάνειας του ελαστικού (inches)radius Ακτίνα του ελαστικού (inches)rim Ζαντα (inches)type Τύπος ελαστικού0 – Παντός Καιρού1 – Ξηρό2 – Βροχή3 – Χιόνι brand Κατασκευαστής model Μοντέλο year έτος κατασκευής Να δημιουργήσετε constructor για την κλάση αυτή, ο ποιος να παίρνει παραμέτρους για όλα τα στοιχεία της κλάσης.
+## ✅191. Ποια είναι η διαφορά μεταξύ ενός Menu και ενός MenuItem (σε Java);
 
-## 200. Ποια είναι η διαφορά μεταξύ μιας abstract class και ενός interface (σε Java);
+- **Menu**: Αναπτυσσόμενο μενού.
+- **MenuItem**: Μία επιλογή μέσα σε ένα Menu.
 
-## 201. Τι είναι τα interfaces στην JAVA; Πώς δημιουργούμε ένα interface; Δώστε ένα παράδειγμα.
+## ✅192. Ποια είναι η διαφορά μεταξύ της επανεκκίνησης και της επαναφόρτωσης ενός Java applet;
 
-## 202. Γράψτε σε Java ένα πρόγραμμα που θα μετατρέπει την θερμοκρασία από βαθμούς Fahrenheit σε Celcius σημείωση: C = 5 (F – 32) / 9"
+- **Restart**: Σταματά και ξεκινά από την αρχή.
+- **Reload**: Φορτώνει ξανά, διατηρώντας δεδομένα.
 
-## 203. Γράψτε πρόγραμμα σε Java, το οποίο θα ζητάει από το χρήστη να εισάγει μία λίστα με 6 ονόματα στην αρχική του σειρά, θα ταξινομεί τα ονόματα με αύξουσα αλφαβητική σειρά και κατόπιν θα εμφανίζει ξανά τη λίστα.
+## ✅193. Τι είναι οι constructors στην JAVA; Δώστε ένα παράδειγμα.
 
-## 204. Τι είναι το Method Overloading; Δώστε ένα παράδειγμα με χρήση κώδικα Java.
+- Ειδικές μέθοδοι που εκτελούνται κατά τη δημιουργία ενός αντικειμένου.
 
-## 205. Τι είναι το Method Overriding; Δώστε ένα παράδειγμα με χρήση κώδικα Java.
+**Παράδειγμα:**
 
-## 206. Εξηγήστε αναλυτικά τον παρακάτω κώδικα:
+```java
+class Car {
+    String model;
+    public Car(String model) { this.model = model; }
+}
+```
 
+## ✅194. Να αναφέρετε από ποια μέρη αποτελείται η Java Virtual Machine και ποιες μεθόδους τρέχει.
 
+- **Μέρη**:
+  1. **Class Loader**: Φορτώνει τις κλάσεις στην JVM.
+  2. **Runtime Memory**: Αποθηκεύει δεδομένα σε μνήμη (stack, heap, method area).
+  3. **Execution Engine**: Εκτελεί bytecode.
+  4. **Garbage Collector**: Διαχειρίζεται τη μνήμη και καθαρίζει τα ανεκμετάλλευτα αντικείμενα.
+  
+- **Μέθοδοι**: 
+  1. **main()**: Η βασική μέθοδος εκκίνησης της εφαρμογής.
+  2. **static methods**: Εκτελούνται χωρίς να απαιτούν δημιουργία αντικειμένου.
+
+## ✅195. Ποιοι είναι οι τύποι μεταβλητών στην Java;
+
+1. **Local Variables**: Ορισμένες μέσα σε μεθόδους.
+2. **Instance Variables**: Ανήκουν σε αντικείμενα.
+3. **Class (Static) Variables**: Ανήκουν στην κλάση και είναι κοινές για όλα τα αντικείμενα.
+4. **Parameters**: Παράμετροι που περνάνε σε μεθόδους.
+
+## ✅196. Τι κάνει το παρακάτω JAVA πρόγραμμα: 
+
+```java
+int j=5; 
+int k=10;
+long max=0; 
+max=k>j?k:j;
+```
+1. **Αρχικοποίηση Μεταβλητών**:
+   - `j = 5`
+   - `k = 10`
+   - `max = 0`
+
+2. **Τελεστής Ανάθεσης Τριάδας**:
+   - Η γραμμή `max = k > j ? k : j;` είναι μια συντομευμένη μορφή της δήλωσης `if-else`.
+     - Αν η συνθήκη `k > j` είναι αληθής (10 > 5), τότε η `max` παίρνει την τιμή του `k` (δηλαδή 10).
+     - Αν η συνθήκη ήταν ψευδής, η `max` θα έπαιρνε την τιμή του `j` (δηλαδή 5).
+
+3. **Αποτέλεσμα**:
+   - Επειδή η συνθήκη `k > j` είναι αληθής, η `max` θα πάρει την τιμή `10`.
+
+**Τελικό Αποτέλεσμα**: Η μεταβλητή `max` θα έχει την τιμή `10`.
+
+## ✅197. Ποιος ο ρόλος των εξαιρέσεων στα προγράμματα εισόδου / εξόδου; Δώστε δύο παραδείγματα σε JAVA.
+
+Οι εξαιρέσεις χρησιμοποιούνται για να χειρίζονται σφάλματα που μπορεί να συμβούν κατά την εκτέλεση προγραμμάτων εισόδου/εξόδου, 
+όπως π.χ. αν προσπαθήσουμε να ανοίξουμε ένα αρχείο που δεν υπάρχει ή αν προσπαθήσουμε να διαβάσουμε από μια κλειστή ροή δεδομένων. 
+Βοηθούν στην αποφυγή του να καταρρεύσει το πρόγραμμα και παρέχουν δυνατότητες για αναφορά και χειρισμό των σφαλμάτων.
+
+**Παραδείγματα:**
+
+1. **Ανάγνωση από αρχείο που δεν υπάρχει**:
+
+```java
+   try {
+       FileReader file = new FileReader("nonexistentfile.txt");
+   } catch (FileNotFoundException e) {
+       System.out.println("Αρχείο δεν βρέθηκε: " + e.getMessage());
+   }
+```
+2. **Προσπάθεια να διαβάσουμε από κλειστή ροή**:
+```java
+try {
+    BufferedReader reader = new BufferedReader(new FileReader("file.txt"));
+    reader.close();
+    reader.readLine(); // Ρίχνει εξαίρεση επειδή η ροή είναι κλειστή
+} catch (IOException e) {
+    System.out.println("Σφάλμα κατά την ανάγνωση: " + e.getMessage());
+}
+```
+
+## ✅198. Δημιουργήστε σε JAVA το παιχνίδι κρεμάλα (hangman). O χρήστης εισάγει γράμματα τα οποία και συγκρίνονται με λέξεις που επιλέγονται τυχαία από έναν πίνακα με λέξεις string. Μηνύματα επιτυχίας ή αποτυχίας εμφανίζονται στο χρήστη και τον καθοδηγούν για το αποτέλεσμα. Για διευκόλυνσή σας τοποθετήστε στον πίνακα 5 διαφορετικές λέξεις και το πρόγραμμά σας μην επεκταθείτε στη δημιουργία GUI.
+
+```java
+import java.util.Scanner;
+import java.util.Random;
+
+public class HangmanGame {
+    public static void main(String[] args) {
+        String[] words = {"java", "python", "ruby", "javascript", "html"};
+        Random rand = new Random();
+        String wordToGuess = words[rand.nextInt(words.length)];
+        char[] guessedWord = new char[wordToGuess.length()];
+        for (int i = 0; i < guessedWord.length; i++) {
+            guessedWord[i] = '_';
+        }
+        
+        Scanner scanner = new Scanner(System.in);
+        int attempts = 6;
+        boolean wordGuessed = false;
+
+        System.out.println("Welcome to Hangman!");
+        
+        while (attempts > 0 && !wordGuessed) {
+            System.out.println("Current word: " + new String(guessedWord));
+            System.out.print("Guess a letter: ");
+            char guess = scanner.next().charAt(0);
+
+            boolean correctGuess = false;
+            for (int i = 0; i < wordToGuess.length(); i++) {
+                if (wordToGuess.charAt(i) == guess) {
+                    guessedWord[i] = guess;
+                    correctGuess = true;
+                }
+            }
+            
+            if (!correctGuess) {
+                attempts--;
+                System.out.println("Incorrect guess. Attempts remaining: " + attempts);
+            }
+
+            wordGuessed = new String(guessedWord).equals(wordToGuess);
+        }
+
+        if (wordGuessed) {
+            System.out.println("Congratulations! You've guessed the word: " + wordToGuess);
+        } else {
+            System.out.println("Game over. The word was: " + wordToGuess);
+        }
+
+        scanner.close();
+    }
+}
+```
+
+## ✅199. Να ορίσετε σε JAVA την κλάση Tires (Λάστιχα) με τις ακόλουθες ιδιότητες:width Πλάτος της επιφάνειας του ελαστικού (inches)radius Ακτίνα του ελαστικού (inches)rim Ζαντα (inches)type Τύπος ελαστικού0 – Παντός Καιρού1 – Ξηρό2 – Βροχή3 – Χιόνι brand Κατασκευαστής model Μοντέλο year έτος κατασκευής Να δημιουργήσετε constructor για την κλάση αυτή, ο ποιος να παίρνει παραμέτρους για όλα τα στοιχεία της κλάσης.
+
+```java
+public class Tires {
+    private double width;
+    private double radius;
+    private double rim;
+    private int type;
+    private String brand;
+    private String model;
+    private int year;
+
+    // Constructor
+    public Tires(double width, double radius, double rim, int type, String brand, String model, int year) {
+        this.width = width;
+        this.radius = radius;
+        this.rim = rim;
+        this.type = type;
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+    }
+
+    // Getters and setters (optional, can be added as needed)
+    public double getWidth() {
+        return width;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public double getRim() {
+        return rim;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    // Main method to test the Tires class
+    public static void main(String[] args) {
+        // Δημιουργία ενός αντικειμένου Tires
+        Tires tire = new Tires(8.5, 16, 17, 0, "Michelin", "Pilot Sport", 2022);
+        
+        // Εκτύπωση των ιδιοτήτων του αντικειμένου
+        System.out.println("Tire Brand: " + tire.getBrand());
+        System.out.println("Tire Model: " + tire.getModel());
+        System.out.println("Tire Width: " + tire.getWidth() + " inches");
+        System.out.println("Tire Radius: " + tire.getRadius() + " inches");
+        System.out.println("Tire Rim: " + tire.getRim() + " inches");
+        System.out.println("Tire Type: " + tire.getType());
+        System.out.println("Tire Year: " + tire.getYear());
+    }
+}
+```
+
+## ✅200. Ποια είναι η διαφορά μεταξύ μιας abstract class και ενός interface (σε Java);
+
+- **Abstract Class**: Μπορεί να έχει υλοποιημένες μεθόδους και κατασκευαστές, κληρονομείται μόνο μία φορά.
+- **Interface**: Ορίζει σύνολο μεθόδων χωρίς υλοποίηση, κληρονομείται πολλές φορές.
+
+## ✅201. Τι είναι τα interfaces στην JAVA; Πώς δημιουργούμε ένα interface; Δώστε ένα παράδειγμα.
+
+- **Interface**: Ορίζει συμπεριφορές που πρέπει να υλοποιηθούν από τις κλάσεις.
+- **Δημιουργία**: `public interface MyInterface { void myMethod(); }`
+
+## ✅202. Γράψτε σε Java ένα πρόγραμμα που θα μετατρέπει την θερμοκρασία από βαθμούς Fahrenheit σε Celcius σημείωση: C = 5 (F – 32) / 9"
+
+```java
+import java.util.Scanner;
+
+public class TemperatureConversion {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double fahrenheit = scanner.nextDouble();
+        double celsius = (fahrenheit - 32) * 5 / 9;
+        System.out.println(celsius);
+    }
+}
+```
+
+## ✅203. Γράψτε πρόγραμμα σε Java, το οποίο θα ζητάει από το χρήστη να εισάγει μία λίστα με 6 ονόματα στην αρχική του σειρά, θα ταξινομεί τα ονόματα με αύξουσα αλφαβητική σειρά και κατόπιν θα εμφανίζει ξανά τη λίστα.
+
+```java
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class SortNames {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[] names = new String[6];
+        for (int i = 0; i < 6; i++) names[i] = scanner.nextLine();
+        Arrays.sort(names);
+        for (String name : names) System.out.println(name);
+    }
+}
+```
+
+## ✅204. Τι είναι το Method Overloading; Δώστε ένα παράδειγμα με χρήση κώδικα Java.
+
+**Method Overloading** (Υπερφόρτωση Μεθόδου) στην Java είναι η δυνατότητα ύπαρξης πολλαπλών μεθόδων με το ίδιο όνομα σε μια κλάση, οι οποίες διαφέρουν ως προς τον αριθμό ή τον τύπο των παραμέτρων τους. Αυτό επιτρέπει την εκτέλεση της ίδιας λειτουργίας με διαφορετικούς τρόπους, ανάλογα με τα δεδομένα εισόδου.
+
+**Παράδειγμα:**
+
+```java
+public class Calculator {
+
+    // Μέθοδος για πρόσθεση δύο ακέραιων αριθμών
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Μέθοδος για πρόσθεση τριών ακέραιων αριθμών
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Μέθοδος για πρόσθεση δύο δεκαδικών αριθμών
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+
+        // Κλήση της μεθόδου add για δύο ακέραιους
+        System.out.println("Πρόσθεση δύο ακέραιων: " + calc.add(5, 3));
+
+        // Κλήση της μεθόδου add για τρεις ακέραιους
+        System.out.println("Πρόσθεση τριών ακέραιων: " + calc.add(5, 3, 2));
+
+        // Κλήση της μεθόδου add για δύο δεκαδικούς
+        System.out.println("Πρόσθεση δύο δεκαδικών: " + calc.add(5.5, 3.2));
+    }
+}
+```
+
+## ✅205. Τι είναι το Method Overriding; Δώστε ένα παράδειγμα με χρήση κώδικα Java.
+
+**Method Overriding** (Επικάλυψη Μεθόδου) στην Java είναι η διαδικασία κατά την οποία μια υποκλάση παρέχει τη δική της υλοποίηση για μια μέθοδο που υπάρχει ήδη στην υπερκλάση της. Αυτό επιτρέπει στην υποκλάση να τροποποιήσει ή να επεκτείνει τη συμπεριφορά της κληρονομημένης μεθόδου.
+
+**Κανόνες για την Επικάλυψη Μεθόδου:**
+
+- Η μέθοδος στην υποκλάση πρέπει να έχει το ίδιο όνομα, τύπο επιστροφής και λίστα παραμέτρων με τη μέθοδο της υπερκλάσης.
+- Η μέθοδος της υπερκλάσης δεν πρέπει να είναι `final`, `static` ή `private`, καθώς αυτές δεν μπορούν να επικαλυφθούν.
+- Συνιστάται η χρήση της annotation `@Override` για να υποδεικνύεται ότι μια μέθοδος επικαλύπτει μια μέθοδο της υπερκλάσης. Αν και δεν είναι υποχρεωτική, βοηθά στον έλεγχο τυχόν λαθών σύνταξης.
+
+**Παράδειγμα:**
+
+```java
+// Υπερκλάση
+class Animal {
+    // Μέθοδος που θα επικαλυφθεί
+    public void sound() {
+        System.out.println("Το ζώο κάνει έναν ήχο.");
+    }
+}
+
+// Υποκλάση
+class Dog extends Animal {
+    // Επικάλυψη της μεθόδου sound()
+    @Override
+    public void sound() {
+        System.out.println("Ο σκύλος γαβγίζει.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myAnimal = new Animal();  // Δημιουργία αντικειμένου τύπου Animal
+        Animal myDog = new Dog();         // Δημιουργία αντικειμένου τύπου Dog
+
+        myAnimal.sound();  // Καλεί την μέθοδο της υπερκλάσης
+        myDog.sound();     // Καλεί την επικαλυμμένη μέθοδο της υποκλάσης
+    }
+}
+```
+
+## ✅206. Εξηγήστε αναλυτικά τον παρακάτω κώδικα:
+
+```java
 interface MyInterface{ 
 public void method1();
 public void method2(); 
@@ -2173,41 +2541,296 @@ public void method2();
 class XYZ implements MyInterface {
  public void method1(){System.out.println(""implementation of method1"");}
  public void method2(){System.out.println(""implementation of method2"");}
- public static void main(String arg[]){MyInterface obj=new XYZ(); obj.method1();}}
+ public static void main(String arg[]){MyInterface obj=new XYZ(); obj.method1();
+ }
+}
+```
+Ο παραπανω κώδικας Java χρησιμοποιεί **interfaces** και **κλάσεις** για να επιδείξει την έννοια της εφαρμογής μεθόδων:
 
-## 207. Δημιουργήστε (σε Java) το class inventory χρησιμοποιώντας Vector Arrays μέσα στο inventory όπου εμπεριέχονται αντικείμενα τύπου string[ ] με χαρακτηριστικά όπλων π.χ mithril sword, Plate Armour κτλ.
+- Interface MyInterface: Δηλώνει δύο αφηρημένες μεθόδους method1() και method2() χωρίς υλοποίηση.
 
-## 208. Δημιουργήστε (σε Java) το πρόγραμμα Print(), που εκτυπώνει μέσω κληρονομικότητας στην οθόνη το αποτέλεσμα των τάξεων:
+- Κλάση XYZ: Υλοποιεί το interface και παρέχει υλοποιήσεις για τις method1() και method2().
+
+- Μέθοδος main: Δημιουργεί αντικείμενο obj από την κλάση XYZ και καλεί τη μέθοδο method1(), η οποία εκτυπώνει "implementation of method1".
+
+## ✅207. Δημιουργήστε (σε Java) το class inventory χρησιμοποιώντας Vector Arrays μέσα στο inventory όπου εμπεριέχονται αντικείμενα τύπου string[ ] με χαρακτηριστικά όπλων π.χ mithril sword, Plate Armour κτλ.
+
+```java
+import java.util.Vector;
+
+public class Inventory {
+    private Vector<String[]> inventory;
+
+    public Inventory() {
+        inventory = new Vector<>();
+    }
+
+    public void addItem(String[] item) {
+        inventory.add(item);
+    }
+
+    public void displayInventory() {
+        for (String[] item : inventory) {
+            for (String attribute : item) {
+                System.out.print(attribute + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Inventory inv = new Inventory();
+
+        // Δημιουργία αντικειμένων όπλων με τα χαρακτηριστικά τους
+        String[] sword = {"Mithril Sword", "Attack: 50", "Weight: 5kg"};
+        String[] armor = {"Plate Armour", "Defense: 70", "Weight: 15kg"};
+
+        // Προσθήκη αντικειμένων στο inventory
+        inv.addItem(sword);
+        inv.addItem(armor);
+
+        // Εμφάνιση του περιεχομένου του inventory
+        inv.displayInventory();
+    }
+}
+```
+
+## ✅208. Δημιουργήστε (σε Java) το πρόγραμμα Print(), που εκτυπώνει μέσω κληρονομικότητας στην οθόνη το αποτέλεσμα των τάξεων:
 sum, που προσθέτει αριθμούς integer,
 sub, που αφαιρεί αριθμούς integer και
 multiply που πολλαπλασιάζει αριθμούς integer.
 
-## 209. Δημιουργήστε (σε Java) την τάξη Rectangle, την τάξη Square και την τάξη Circle η κάθε μία περιέχει τουλάχιστον 3 μεταβλητές και μια συνάρτηση που υπολογίζει το εμβαδόν τους. Οι τάξεις Square και Circle κληρονομούν από την τάξη Rectangle τις μεταβλητές της, υπολογίζουν και εκτυπώνουν το εμβαδόν τους (εμβαδό κύκλου = 2*3.14*R*R, εμβαδό τετραγώνου = Width*Width).
+```java
+// Κλάση για βασικές αριθμητικές λειτουργίες
+class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+    public int multiply(int a, int b) {  
+        return a * b;
+    }
+}
 
-## 210. Να γραφεί συνάρτηση σε OpenGL που να σχεδιάζει ένα επίπεδο (plane).
+// Κλάση που εκτυπώνει τα αποτελέσματα των αριθμητικών λειτουργιών
+class Printer extends Calculator {
+    public void printResults(int a, int b) {
+        System.out.println("Άθροισμα: " + add(a, b));
+        System.out.println("Αφαίρεση: " + subtract(a, b));
+        System.out.println("Πολλαπλασιασμός: " + multiply(a, b));
+    }
+}
 
-## 211. Σε τι οφείλουμε το γεγονός ότι η OpenGL μπορεί να δείξει από 256 έως δισεκατομμύρια χρώματα χωρίς να χρειαστεί να ξαναγράψουμε ή να ξανακάνουμε compile τον κώδικα;
+// Κύρια κλάση για την εκτέλεση του προγράμματος
+public class Print {
+    public static void main(String[] args) {
+        Printer printer = new Printer();
+        int num1 = 10;
+        int num2 = 5;
+        printer.printResults(num1, num2);  // Κλήση της μεθόδου για εκτύπωση των αποτελεσμάτων
+    }
+}
+```
 
-## 212. Η OpenGL χρησιμοποιεί μια απλή, βασική, μορφή ονοματολογίας για τις εντολές της. Αναφέρατε ποια είναι αυτή και παραθέστε παράδειγμα.
+## ✅209. Δημιουργήστε (σε Java) την τάξη Rectangle, την τάξη Square και την τάξη Circle η κάθε μία περιέχει τουλάχιστον 3 μεταβλητές και μια συνάρτηση που υπολογίζει το εμβαδόν τους. Οι τάξεις Square και Circle κληρονομούν από την τάξη Rectangle τις μεταβλητές της, υπολογίζουν και εκτυπώνουν το εμβαδόν τους (εμβαδό κύκλου = 2*3.14*R*R, εμβαδό τετραγώνου = Width*Width).
 
-## 213. Αναφέρατε τι ονομάζουμε GLUT στην OpenGL. Για ποιο λόγο δημιουργήθηκε και ποιες βασικές λειτουργίες προσφέρει;
+```java
+// Κλάση για ορθογώνιο παραλληλόγραμμο
+class Rectangle {
+    double width;
+    double height;
 
-## 214. Με ποια εντολή δημιουργούμε ένα τρισδιάστατο ορθογραφικό παράθυρο με διαστάσεις: 
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public double calculateArea() {
+        return width * height;
+    }
+}
+
+// Κλάση για τετράγωνο που κληρονομεί από την Rectangle
+class Square extends Rectangle {
+
+    public Square(double sideLength) {
+        super(sideLength, sideLength);
+    }
+
+    @Override
+    public double calculateArea() {
+        return width * width;
+    }
+}
+
+// Κλάση για κύκλο που κληρονομεί από την Rectangle
+class Circle extends Rectangle {
+    double radius;
+
+    public Circle(double radius) {
+        super(0, 0); // Δεν χρησιμοποιούμε width και height για τον κύκλο
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return 2 * 3.14 * radius * radius;
+    }
+}
+
+// Κύρια κλάση για την εκτέλεση του προγράμματος
+public class ShapeTest {
+    public static void main(String[] args) {
+        Rectangle rectangle = new Rectangle(5, 10);
+        System.out.println("Εμβαδόν Ορθογωνίου Παραλληλόγραμμου: " + rectangle.calculateArea());
+
+        Square square = new Square(4);
+        System.out.println("Εμβαδόν Τετραγώνου: " + square.calculateArea());
+
+        Circle circle = new Circle(3);
+        System.out.println("Εμβαδόν Κύκλου: " + circle.calculateArea());
+    }
+}
+```
+
+## ✅210. Να γραφεί συνάρτηση σε OpenGL που να σχεδιάζει ένα επίπεδο (plane).
+
+```c
+void drawPlane(float width, float height) {
+    glBegin(GL_QUADS); // Ξεκινάμε την σχεδίαση τετραγώνου
+    glVertex3f(-width / 2, -height / 2, 0.0f); // Κορυφή 1
+    glVertex3f(width / 2, -height / 2, 0.0f);  // Κορυφή 2
+    glVertex3f(width / 2, height / 2, 0.0f);  // Κορυφή 3
+    glVertex3f(-width / 2, height / 2, 0.0f); // Κορυφή 4
+    glEnd(); // Τερματισμός της σχεδίασης
+}
+```
+
+## ✅211. Σε τι οφείλουμε το γεγονός ότι η OpenGL μπορεί να δείξει από 256 έως δισεκατομμύρια χρώματα χωρίς να χρειαστεί να ξαναγράψουμε ή να ξανακάνουμε compile τον κώδικα;
+
+Η δυνατότητα της OpenGL να εμφανίζει από 256 έως δισεκατομμύρια χρώματα χωρίς να χρειάζεται να τροποποιούμε τον κώδικα οφείλεται στην υποστήριξη του σύγχρονου υποσυστήματος γραφικών, το οποίο μπορεί να χειρίζεται διαφορετικά βάθη χρώματος (color depths) όπως 8-bit, 16-bit, 24-bit, και 32-bit χρώματα. 
+Επιπλέον, χρησιμοποιεί την έννοια των μεταβλητών χρωμάτων μέσω της υλοποίησης διαφορετικών πίνακες χρωμάτων και εξαρτάται από την υποστήριξη των υλικών γραφικών (GPU). 
+Με αυτόν τον τρόπο, μπορεί να αναπαραστήσει χιλιάδες ή εκατομμύρια χρώματα χωρίς να χρειάζεται αλλαγή στον κώδικα.
+
+## ✅212. Η OpenGL χρησιμοποιεί μια απλή, βασική, μορφή ονοματολογίας για τις εντολές της. Αναφέρατε ποια είναι αυτή και παραθέστε παράδειγμα.
+
+Η OpenGL ακολουθεί μια βασική μορφή ονοματολογίας όπου όλες οι εντολές ξεκινούν με το πρόθεμα `gl` και ακολουθούνται από το όνομα της λειτουργίας σε πεζούς χαρακτήρες, με τις λέξεις να χωρίζονται από κάτω παύλες (underscores). Αυτός ο τρόπος ονοματολογίας διατηρεί τον κώδικα καθαρό και αναγνώσιμο.
+
+Παραδείγματα:
+- `glClearColor`: Ρυθμίζει το χρώμα καθαρισμού για το παράθυρο.
+- `glEnable`: Ενεργοποιεί μια συγκεκριμένη λειτουργία ή δυνατότητα στην OpenGL.
+- `glDisable`: Απενεργοποιεί μια δυνατότητα στην OpenGL.
+- `glBegin`: Ξεκινά τη διαδικασία σχεδίασης γεωμετρίας.
+- `glEnd`: Ολοκληρώνει τη διαδικασία σχεδίασης γεωμετρίας.
+
+## ✅213. Αναφέρατε τι ονομάζουμε GLUT στην OpenGL. Για ποιο λόγο δημιουργήθηκε και ποιες βασικές λειτουργίες προσφέρει;
+
+Το GLUT (OpenGL Utility Toolkit) είναι μια βιβλιοθήκη που παρέχει μια σειρά από εργαλεία και λειτουργίες για τη διευκόλυνση της ανάπτυξης εφαρμογών OpenGL. Δημιουργήθηκε για να παρέχει βασικές λειτουργίες χειρισμού παραθύρων, γεγονότων (events) και εισόδου (input), ανεξαρτήτως της πλατφόρμας στην οποία τρέχει η εφαρμογή (Windows, Linux, MacOS). Προσφέρει σημαντικές λειτουργίες όπως:
+- Δημιουργία και διαχείριση παραθύρων.
+- Διαχείριση εισόδου από το πληκτρολόγιο και το ποντίκι.
+- Διαχείριση γεγονότων (events).
+- Διαχείριση των κύκλων ανανέωσης της οθόνης και των παραθύρων.
+
+## ✅214. Με ποια εντολή δημιουργούμε ένα τρισδιάστατο ορθογραφικό παράθυρο με διαστάσεις: 
 αριστερά -3,δεξιά 3, πάνω 3, κάτω -3 και clipping planes στα 1 και 100 για το near και far αντίστοιχα (στην
 OpenGL);
 
-## 215. Εξετάστε την ισχύ των παρακάτω προτάσεων δηλώνοντας ΣΩΣΤΟ ή ΛΑΘΟΣ και εξηγώντας την επιλογή σας (Όπου κρίνετε απαραίτητο, παραθέστε παράδειγμα).
+- Για να δημιουργήσετε ένα τρισδιάστατο ορθογραφικό παράθυρο στην OpenGL με τις καθορισμένες διαστάσεις και επίπεδα κοπής, χρησιμοποιείτε την εντολή `glOrtho`.
+
+Η σύνταξή της είναι:
+
+```c
+glOrtho(left, right, bottom, top, near, far);
+```
+
+## ✅215. Εξετάστε την ισχύ των παρακάτω προτάσεων δηλώνοντας ΣΩΣΤΟ ή ΛΑΘΟΣ και εξηγώντας την επιλογή σας (Όπου κρίνετε απαραίτητο, παραθέστε παράδειγμα).
 α) 1. Τα επικρατέστερα Λειτουργικά Συστήματα (Windows, Unix, Linux, Mac OS) υποστηρίζουν την OpenGL. 
 β) Η OpenGL μπορεί αποκλειστικά να κληθεί (is callable) από τις γλώσσες προγραμματισμού C / C++ (δηλαδή υπάρχει μοναδικό language binding). 
 γ) Το μοναδικό περιβάλλον ανάπτυξης προγραμμάτων OpenGL είναι το DEV C++. 
 δ) Η OpenGL περιέχει εντολές επιλογής (τύπου If ... else). 
 ε) Οι εντολές της OpenGL ξεκινούν με το πρόθεμα gl.
 
-## 216. Ποια η λειτουργία των παρακάτω εντολών στην OpenGL και τι παραμέτρους δέχονται; Να δοθεί παράδειγμα.α) glutInitWindowPosition β) glutInitWindowSize γ) glutCreateWindow
+**α) ΣΩΣΤΟ:** Η OpenGL υποστηρίζεται από Windows, Unix, Linux, Mac OS.
 
-## 217. Περιγράψτε τρεις βασικές βιβλιοθήκες εντολών της OpenGL που περιέχουν εντολές σχεδίασης, γραφικών και απόδοσης. Σε ποιο σημείο του προγράμματος δηλώνονται;
+**β) ΛΑΘΟΣ:** Η OpenGL υποστηρίζεται από πολλές γλώσσες, όχι μόνο C/C++.
 
-## 218. Αναφέρετε την λειτουργία της glutMainLoop() στην OpenGL. Σε ποιο σημείο πρέπει να καλείται;
+**γ) ΛΑΘΟΣ:** Η OpenGL αναπτύσσεται σε διάφορα περιβάλλοντα, όχι μόνο στο DEV C++.
+
+**δ) ΛΑΘΟΣ:** Η OpenGL δεν έχει εντολές ελέγχου ροής (π.χ. if-else).
+
+**ε) ΣΩΣΤΟ:** Οι εντολές της OpenGL ξεκινούν με το πρόθεμα `gl`.
+
+
+## ✅216. Ποια η λειτουργία των παρακάτω εντολών στην OpenGL και τι παραμέτρους δέχονται; Να δοθεί παράδειγμα.α) glutInitWindowPosition β) glutInitWindowSize γ) glutCreateWindow
+
+**a) glutInitWindowPosition**: 
+
+  Ορίζει τη θέση του παραθύρου στην οθόνη. Παραμέτροι: (`int x, int y`) - Οι συντεταγμένες για την τοποθέτηση του παραθύρου.
+  
+  **Παράδειγμα**:
+```c
+glutInitWindowPosition(100, 100);
+```
+
+**b) glutInitWindowSize**: Ορίζει το μέγεθος του παραθύρου. Παραμέτροι: (`int width, int height`) - Πλάτος και ύψος του παραθύρου. Παράδειγμα:
+
+```c
+glutInitWindowSize(500, 500);
+```
+
+**c) glutCreateWindow**: Δημιουργεί το παράθυρο. Παραμέτροι: (`const char* title`) - Ο τίτλος του παραθύρου. Παράδειγμα:
+
+```c
+glutCreateWindow("OpenGL Window");
+```
+
+## ✅217. Περιγράψτε τρεις βασικές βιβλιοθήκες εντολών της OpenGL που περιέχουν εντολές σχεδίασης, γραφικών και απόδοσης. Σε ποιο σημείο του προγράμματος δηλώνονται;
+
+1. **GLU (OpenGL Utility Library):**
+
+   - **Λειτουργία:** Παρέχει επιπλέον εντολές για εργασίες όπως η δημιουργία γεωμετρικών σχημάτων, η διαχείριση προβολών και η διαχείριση μετασχηματισμών.
+   - **Δήλωση:** Συνήθως δηλώνεται στην αρχή του προγράμματος, μετά την εισαγωγή της κύριας βιβλιοθήκης OpenGL.
+   - **Παράδειγμα:**
+     ```cpp
+     #include <GL/glut.h>
+     #include <GL/glu.h>
+     ```
+
+2. **GLEW (OpenGL Extension Wrangler Library):**
+
+   - **Λειτουργία:** Διαχειρίζεται τις επεκτάσεις της OpenGL, επιτρέποντας την πρόσβαση σε νέες λειτουργίες που δεν υποστηρίζονται από όλες τις κάρτες γραφικών.
+   - **Δήλωση:** Δηλώνεται στην αρχή του προγράμματος, μετά την εισαγωγή της βιβλιοθήκης OpenGL.
+   - **Παράδειγμα:**
+     ```cpp
+     #include <GL/glew.h>
+     #include <GL/glut.h>
+     ```
+
+3. **GLUT (OpenGL Utility Toolkit):**
+
+   - **Λειτουργία:** Παρέχει λειτουργίες για τη δημιουργία παραθύρων, τη διαχείριση εισόδου και την εκτέλεση του κύκλου γεγονότων.
+   - **Δήλωση:** Δηλώνεται στην αρχή του προγράμματος, πριν από τη χρήση των συναρτήσεών της.
+   - **Παράδειγμα:**
+     ```cpp
+     #include <GL/glut.h>
+     ```
+
+## ✅218. Αναφέρετε την λειτουργία της glutMainLoop() στην OpenGL. Σε ποιο σημείο πρέπει να καλείται;
+
+- **Λειτουργία:** Η `glutMainLoop()` εισέρχεται στον κύκλο επεξεργασίας γεγονότων της GLUT, διατηρώντας το πρόγραμμα σε λειτουργία και επεξεργάζοντας τα γεγονότα εισόδου και τα γραφικά.
+- **Σημείο κλήσης:** Καλείται μία φορά στο τέλος της συνάρτησης `main()`, μετά την ολοκλήρωση της ρύθμισης του παραθύρου και της καταγραφής των callbacks.
+- **Παράδειγμα:**
+ ```c
+  int main(int argc, char** argv) {
+      glutInit(&argc, argv);
+      glutCreateWindow("OpenGL Window");
+      // Ρυθμίσεις και δηλώσεις callbacks
+      glutMainLoop();
+      return 0;
+  }
+```
 
 ## 219. Ποια είναι τα πλεονεκτήματα χρήσης μιας πλατφόρμας CMS (Content Management System), σε σχέση με την δημιουργία εκ νέου ενός web site;
 
@@ -2219,7 +2842,7 @@ OpenGL);
 
 ## 223. Μετά την υλοποίηση της ιστοσελίδας με χρήση CMS τοπικά, ποια βήματα πρέπει να γίνουν ώστε να "ανέβει" (upload) στο Internet;
 
-## 224. Τι είναι τα σχεδιαστικά χνάρια και ποια η χρησιμότητα τους;\
+## 224. Τι είναι τα σχεδιαστικά χνάρια και ποια η χρησιμότητα τους;
 
 
 # ΟΜΑΔΑ Β. ΕΙΔΙΚΕΣ ΕΡΩΤΗΣΕΙΣ(174)
