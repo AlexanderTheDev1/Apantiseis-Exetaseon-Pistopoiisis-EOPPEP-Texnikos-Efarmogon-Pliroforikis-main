@@ -2023,19 +2023,32 @@ INSERT INTO Επαφές (Κωδικός, Όνομα, Τηλέφωνο) VALUES
 ## ✅181. Τί είναι τα ψευδώνυμα και πού τα χρησιμοποιούμε; Εξηγήστε τον ακόλουθο κώδικα:
 
 ```sql
-SELECT E.NAME, S.NAME FROM EMPLOYEE E, EMPLOYEE S WHERE E.SUPERSN=S.SN
+SELECT E.NAME, S.NAME 
+FROM EMPLOYEE E, EMPLOYEE S 
+WHERE E.SUPERSN=S.SN
 ```
 Ψευδώνυμα (Aliases): Είναι εναλλακτικά ονόματα που δίνονται σε πίνακες ή στήλες για ευκολία και σαφήνεια στα ερωτήματα SQL.
 
 Επεξήγηση κώδικα:
 
+SELECT E.NAME, S.NAME: Επιστρέφει τα ονόματα των υπαλλήλων και των επόπτων τους.
 EMPLOYEE E, EMPLOYEE S: Δημιουργούνται δύο ψευδώνυμα για τον πίνακα EMPLOYEE, το E και το S.
 E.SUPERSN = S.SN: Η συνθήκη συνένωσης που αντιστοιχίζει τον επόπτη (SUPERSN) ενός υπαλλήλου με τον αριθμό κοινωνικής ασφάλισης (SN) ενός άλλου.
-SELECT E.NAME, S.NAME: Επιστρέφει τα ονόματα των υπαλλήλων και των επόπτων τους.
+
 
 ## 182. Αν στο αποτέλεσμα ενός ερωτήματος πάρουμε ως απάντηση πολλαπλές πλειάδες πώς τις εξαλείφουμε; Δώστε ένα παράδειγμα σε SQL.
 
+```sql
+SELECT DISTINCT column_name FROM table_name;
+```
+
 ## 183. Πώς επιτυγχάνουμε τη διάταξη των αποτελεσμάτων του ερωτήματος; Δώστε ένα παράδειγμα όπου θα επιλέγεται από ένα πίνακα το ονοματεπώνυμο ενός σπουδαστή και θα εμφανίζονται τα αποτελέσματα ταξινομημένα κατά αύξουσα αλφαβητική σειρά στο όνομα και κατά φθίνουσα αλφαβητική σειρά στο επώνυμο.
+
+```sql
+SELECT first_name, last_name 
+FROM students 
+ORDER BY first_name ASC, last_name DESC;
+```
 
 ## 184. Εξηγήστε τον ακόλουθο κώδικα:
 
@@ -2048,7 +2061,64 @@ WHERE EXISTS
 
 ## 185. Δώστε 3 τύπους συνένωσης στην SQL (όχι το απλό JOIN) και για κάθε έναν από αυτούς δώστε ένα παράδειγμα με χρήση κώδικα SQL.
 
+- LEFT JOIN: Επιστρέφει όλα τα δεδομένα από τον αριστερό πίνακα και τα αντίστοιχα από τον δεξιό, αν υπάρχουν.
+```sql
+SELECT students.name, courses.course_name
+FROM students
+LEFT JOIN courses ON students.course_id = courses.id;
+```
+
+- RIGHT JOIN: Επιστρέφει όλα τα δεδομένα από τον δεξιό πίνακα και τα αντίστοιχα από τον αριστερό, αν υπάρχουν.
+```sql
+SELECT students.name, courses.course_name
+FROM students
+RIGHT JOIN courses ON students.course_id = courses.id;
+```
+
+- FULL JOIN: Επιστρέφει όλα τα δεδομένα και από τους δύο πίνακες, αντιστοιχίζοντας όπου είναι δυνατόν.
+```sql
+SELECT students.name, courses.course_name
+FROM students
+FULL JOIN courses ON students.course_id = courses.id;
+```
+
+
 ## 186. Αναλύστε τη χρήση των συναρτήσεων στον αντικειμενοστραφή προγραμματισμό. Δώστε παράδειγμα πως οι συναρτήσεις καλούνται ως μηνύματα σύνδεσης μεταξύ τάξεων.
+
+```java
+class Student {
+    private String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public void attendCourse(Course course) {
+        System.out.println(name + " attends " + course.getCourseName());
+    }
+}
+
+class Course {
+    private String courseName;
+
+    public Course(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student("Alex");
+        Course course = new Course("Mathematics");
+        
+        student.attendCourse(course); // Κλήση συναρτήσεων ως μηνύματα σύνδεσης
+    }
+}
+```
 
 ## 187. Ποια από τα ακόλουθα είναι σωστά και ποια είναι λάθος; Αιτιολογήστε την απάντησή σας για κάθε περίπτωση.
 Person p1 = new Student();
