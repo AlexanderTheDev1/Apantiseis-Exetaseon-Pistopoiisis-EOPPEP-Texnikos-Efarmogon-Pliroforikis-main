@@ -51,21 +51,13 @@
 
 ## Πηγές / Αναφορές
 
-1. **Επίσημος Οδηγός Εξετάσεων ΕΟΠΠΕΠ - Τεχνικός Εφαρμογών Πληροφορικής**  
+**Επίσημος Οδηγός Εξετάσεων ΕΟΠΠΕΠ - Τεχνικός Εφαρμογών Πληροφορικής**  
    Το επίσημο έγγραφο του ΕΟΠΠΕΠ για τον τομέα "Τεχνικός Εφαρμογών Πληροφορικής", το οποίο περιλαμβάνει τις ερωτήσεις και τις απαιτήσεις για την πιστοποίηση.  
    [Επίσημος Οδηγός ΕΟΠΠΕΠ](https://www.eoppep.gr/phocadownloadpap/userupload/07_TEXNIKOS_EFARMOGON_PLHROFORIKHS.pdf?utm_source=chatgpt.com)
 
-2. **OpenAI's ChatGPT**  
+**OpenAI's ChatGPT**  
    Χρησιμοποιήθηκε για την υποστήριξη της έρευνας, της διαρθρωτικής οργάνωσης και της επεξεργασίας των απαντήσεων. Οι απαντήσεις που παρέχονται έχουν προσαρμοστεί και επαληθευτεί για να αντικατοπτρίζουν τη δική μου κατανόηση του υλικού.  
    [ChatGPT (OpenAI)](https://www.openai.com/chatgpt)
-
-3. **Grammarly Plagiarism Checker**  
-   Χρησιμοποιήθηκε για τη διασφάλιση της αυθεντικότητας των απαντήσεων και την αποφυγή λογοκλοπής.  
-   [Grammarly Plagiarism Checker](https://www.grammarly.com/plagiarism-checker?utm_source=google&utm_medium=cpc&utm_campaign=19836457570&utm_content=652228916766&utm_term=plagiarism%20checker&target=&targetid=kwd-11839001&adgroup=145729836846&device=c&matchtype=b&placement=&network=g&extension=&clickid=CjwKCAiArKW-BhAzEiwAZhWsIHs2vx0jE6huoZo9LqhG2YwjQVwoCKTX-gOIdQauvxQXaN19vlbvTBoCy6QQAvD_BwE&gad_source=1&gclid=CjwKCAiArKW-BhAzEiwAZhWsIHs2vx0jE6huoZo9LqhG2YwjQVwoCKTX-gOIdQauvxQXaN19vlbvTBoCy6QQAvD_BwE&gclsrc=aw.ds)
-
-4. **MDN Web Docs (Mozilla Developer Network)**  
-   Χρησιμοποιήθηκε για την κατανόηση και αναφορά στις τεχνολογίες web development, όπως HTML, CSS, JavaScript, και άλλες τεχνολογίες για το frontend και backend development.  
-   [MDN Web Docs](https://developer.mozilla.org/)
 
 
 Αυτή η λίστα αναφοράς καλύπτει πολλές από τις πηγές που χρησιμοποιήθηκαν για την κατανόηση και τη σύνταξη του περιεχομένου αυτού του έργου, καθώς και για τη διασφάλιση της ποιότητας και της ακρίβειας των απαντήσεων. Σε κάθε περίπτωση, οι χρήστες ενθαρρύνονται να ανατρέχουν στις αρχικές πηγές για περαιτέρω έρευνα και επιβεβαίωση.
