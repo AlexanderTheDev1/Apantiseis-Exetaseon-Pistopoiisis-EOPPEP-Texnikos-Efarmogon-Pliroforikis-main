@@ -18,7 +18,7 @@
 - Τις **επίσημες ερωτήσεις** πιστοποίησης του ΕΟΠΠΕΠ.
 - **Απαντήσεις** στις ερωτήσεις, οι οποίες έχουν παραχθεί από εμένα για να βοηθήσουν στην προετοιμασία για τις εξετάσεις.
 - Αναφορά στους τομείς της πιστοποίησης: *Πολυμέσα*, *Web Development*, *Game Development*.
-- Για όλες τις λεπτομέρειες διαβαστε αυτό [https://github.com/AlexanderTheDev1/Apantiseis-Exetaseon-Pistopoiisis-EOPPEP-Texnikos-Efarmogon-Pliroforikis-main/blob/main/07_TEXNIKOS_EFARMOGON_PLHROFORIKHS.md]
+- Για όλες τις λεπτομέρειες διαβαστε αυτό [https://github.com/AlexanderTheDev1/Apantiseis-Exetaseon-Pistopoiisis-EOPPEP-Texnikos-Efarmogon-Pliroforikis-main/blob/main/origin_07_TEXNIKOS_EFARMOGON_PLHROFORIKHS.md]
 
   
 
