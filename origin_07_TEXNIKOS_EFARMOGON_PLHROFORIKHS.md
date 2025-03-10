@@ -2802,7 +2802,7 @@ glOrtho(left, right, bottom, top, near, far);
 **ε) ΣΩΣΤΟ:** Οι εντολές της OpenGL ξεκινούν με το πρόθεμα `gl`.
 
 
-## ✅216. Ποια η λειτουργία των παρακάτω εντολών στην OpenGL και τι παραμέτρους δέχονται; Να δοθεί παράδειγμα.α) glutInitWindowPosition β) glutInitWindowSize γ) glutCreateWindow
+## ✅216. Ποια η λειτουργία των παρακάτω εντολών στην OpenGL και τι παραμέτρους δέχονται; Να δοθεί παράδειγμα.a) glutInitWindowPosition b) glutInitWindowSize c) glutCreateWindow
 
 **a) glutInitWindowPosition**: 
 
