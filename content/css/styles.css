@@ -57,13 +57,17 @@ button {
     cursor: pointer;
     border-radius: 15px;
     font-weight: bold;
-    background-color: var(--background);
+    background-color: var(--highlight);
+    color: var(--white);
     font-size: 1rem;
     border: 3px solid var(--accent);
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
-
+button.active {
+    background-color: var(--primary);
+    transform: scale(1.05);
+}
 .few-words {
     width: 200px;
 }
@@ -71,16 +75,19 @@ button {
     width: 400px;
 }
 button:hover {
-    background-color: var(--highlight);
+    background-color: var(--primary);
 }
-#confirm-button {
+#confirm-button, #next-button {
     padding: 0.5rem;
     font-size: 1.5rem;
-    width: 180px;
-    margin-right: 10rem;
+    width: 180px;   
 }
-#confirm-button:hover {
-    background-color: var(--highlight);
+#next-button {
+    width: 140px;
+}
+
+#confirm-button:hover, #next-button:hover {
+    background-color: var(--primary);
 }
 footer {
     background-color: var(--background);
