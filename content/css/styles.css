@@ -7,6 +7,8 @@
     --font-size: 16px;
     --white: #F8F9FA;
     --black: #000000;
+    --green: #1ad309;
+    --red: #ff0000;
 }
 * {
     margin: 0;
@@ -60,7 +62,7 @@ button {
     background-color: var(--highlight);
     color: var(--white);
     font-size: 1rem;
-    border: 3px solid var(--accent);
+    border: 2px solid var(--accent);
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -76,6 +78,12 @@ button.active {
 }
 button:hover {
     background-color: var(--primary);
+}
+.correct {
+    background-color: var(--green);
+}
+.wrong {
+    background-color: var(--red);
 }
 #confirm-button, #next-button {
     padding: 0.5rem;

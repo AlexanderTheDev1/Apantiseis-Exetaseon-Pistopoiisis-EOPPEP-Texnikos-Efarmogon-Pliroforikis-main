@@ -5,4 +5,3 @@ document.querySelectorAll('.selected').forEach(function(element) {
         this.classList.toggle('active');
     });
 });
-
