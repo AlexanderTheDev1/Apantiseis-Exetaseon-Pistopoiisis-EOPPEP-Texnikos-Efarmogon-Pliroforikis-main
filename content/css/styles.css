@@ -66,6 +66,7 @@ button {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+
 button.active {
     background-color: var(--primary);
     transform: scale(1.05);

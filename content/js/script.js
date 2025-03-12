@@ -1,3 +1,5 @@
+
+
 document.querySelectorAll('.question, .answer').forEach(function(element) {
     
     element.addEventListener('click', function() {
