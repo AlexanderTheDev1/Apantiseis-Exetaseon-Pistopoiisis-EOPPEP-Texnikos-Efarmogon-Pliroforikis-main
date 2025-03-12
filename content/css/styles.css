@@ -70,10 +70,10 @@ button.active {
     background-color: var(--primary);
     transform: scale(1.05);
 }
-.few-words {
+.question {
     width: 200px;
 }
-.a-lot-words {
+.answer {
     width: 400px;
 }
 button:hover {
