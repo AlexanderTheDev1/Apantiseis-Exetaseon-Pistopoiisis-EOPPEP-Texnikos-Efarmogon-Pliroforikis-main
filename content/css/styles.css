@@ -1,105 +1,118 @@
-:root {
-    --background: #F9FAFB;
-    --primary: #1E3A8A;
-    --highlight: #3B82F6;
-    --accent: #64748B;
-    --text: #111827;
-    --font-size: 16px;
-    --white: #F8F9FA;
-    --black: #000000;
-    --green: #1ad309;
-    --red: #ff0000;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-a {
-    text-decoration: none;
-    color: var(--primary);
-    padding: 0.3rem;
-}
-a:hover {
-    color: var(--highlight);
-}
-a:visited {
-    color: var(--highlight);
-}
-html {
-    font-size: var(--font-size);
-    font-family: Arial, Helvetica, sans-serif;
-}
-html, body {
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--background);
     color: var(--text);
-}
-h1 {
-    text-align: center;
-    margin: 1rem;
-    padding: 1rem;
-    color: var(--primary);
-    text-decoration: 3px underline var(--highlight);
-}
-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-section h2 {
-    margin: 2rem;
+    font-size: var(--font-size);
+    line-height: 1.6;
     padding: 2rem;
-    color: var(--primary); 
-    text-align: center;  
-}
-button {
-    margin: 2rem;
-    padding: 1rem;
-    cursor: pointer;
-    border-radius: 15px;
-    font-weight: bold;
-    background-color: var(--highlight);
-    color: var(--white);
-    font-size: 1rem;
-    border: 3px solid var(--accent);
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
 }
 
-button.active {
-    background-color: var(--primary);
-    transform: scale(1.05);
+.container {
+    max-width: 900px;
+    margin: auto;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
 }
-.question {
-    width: 200px;
+
+h1 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center; /* This is already set to center the main title */
 }
-.answer {
-    width: 400px;
-}
-button:hover {
-    background-color: var(--primary);
-}
-.correct {
-    background-color: var(--green);
-}
-.wrong {
-    background-color: var(--red);
-}
-#confirm-button, #next-button {
-    padding: 0.5rem;
+
+h2 {
+    color: var(--highlight);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     font-size: 1.5rem;
-    width: 180px;   
-}
-#next-button {
-    width: 140px;
+    text-align: center; /* Add this to center the quiz section titles */
 }
 
-#confirm-button:hover, #next-button:hover {
-    background-color: var(--primary);
+.instructions {
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: var(--accent);
+    text-align: center; /* This is already set to center the instructions */
 }
-footer {
-    background-color: var(--background);
+
+.quiz-section {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-left: 4px solid var(--highlight);
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+details.quiz-item {
+    background-color: #f1f5f9;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+details[open] {
+    background-color: #e0f2fe;
+    border-left: 4px solid var(--primary);
+}
+
+summary.question {
+    cursor: pointer;
     padding: 1rem;
-    text-align: center;
+    font-weight: bold;
+    color: var(--text);
+    outline: none;
+    transition: background 0.3s ease;
+    text-align: center; /* Add this to center the question text */
+}
+
+summary.question:hover {
+    background-color: #e5e7eb;
+}
+
+.answer {
+    padding: 1rem;
+    border-top: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    color: var(--text);
+    /* The answer content (ul, ol, p) is typically left-aligned for readability.
+       If you want to center this too, you'd add text-align: center; here,
+       but it might make lists and paragraphs harder to read. */
+}
+
+.answer ul,
+.answer ol {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.answer li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    summary.question,
+    .answer {
+        font-size: 0.95rem;
+    }
 }
